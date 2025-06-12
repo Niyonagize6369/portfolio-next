@@ -22,7 +22,7 @@ const Projects = () => {
                   className="rounded-lg shadow-lg md:shrink-0"
                 />
                 <h3 className="mt-2 text-slate-900">{project.title}</h3>
-                <p className="w-1/2">{project.description}</p>
+                <p className="w-1/1">{project.description}</p>
                 <div className="technologies">
                   {project.technologies.map((tech, index) => (
                     <span key={index}>{tech}</span>
