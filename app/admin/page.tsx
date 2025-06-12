@@ -2,7 +2,7 @@ import React from 'react';
 
 function Page() {
     return (
-        <div className="bg-gray min-h-screen flex flex-col lg:flex-row text-white items-center justify-evenly lg:justify-between text-24px px-20">
+        <div className="bg-gray-500 min-h-screen flex flex-col lg:flex-row text-white items-center justify-evenly lg:justify-between text-24px px-20">
             <p className="text-48px text-center w-1/2">Hello there! Welcome to the Admin Management System</p>
             <div className=" w-1/2">
                 <div className="flex items-center justify-center">

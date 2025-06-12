@@ -6,7 +6,7 @@ import Admincards from "@/components/Admincards";
 function Page() {
     return (
         <>
-            <div className="flex w-full flex-row align-items-center bg-gray">
+            <div className="flex w-full flex-row align-items-center bg-gray-500">
                 <Adminheader/>
                 <div className="bg-gray min-h-screen text-white flex flex-col items-center pt-28 gap-8 w-full">
                     <div className="text-center">

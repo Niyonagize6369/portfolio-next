@@ -43,7 +43,7 @@ const contactMe = () => {
         <div className="flex flex-col items-center md:flex md:space-x-12">
           <div className="flex-1">
             <h3 className="mb-2 text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-800 to-blue-900">
-              let's Talk
+              Let's Talk
             </h3>
             <p className="text-gray-900 mb-4">
               I'm open to discussing web development project or partnership
@@ -55,7 +55,7 @@ const contactMe = () => {
                 href="mailto:youremail@example.com"
                 className="hover:underline text-black"
               >
-                youremail@example.com
+                niyonagizerachel10@example.com
               </a>
             </div>
             <div className="mb-2">
