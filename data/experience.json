@@ -16,18 +16,28 @@
     }
 
   ],
+
   "education": [
     {
       "id": 1,
-      "degree": "bacherol in Business information technology",
+      "degree": "B.Sc. Business Information Technology",
       "institution": "University of Rwanda",
-      "year": "2024"
+      "year": "2021-2024",
+      "details": [
+        "Graduated with honors",
+        "Relevant coursework: Algorithms, Databases"
+      ]
     },
     {
-      "id": 2,
-      "degree": "Diploma in Computer Networking",
-      "institution": "COLLEGE ACEJ KARAMA",
-      "year": "2019"
+      "id": 1,
+      "degree": "B.Sc. Business Information Technology",
+      "institution": "University of Rwanda",
+      "year": "2021-2024",
+      "details": [
+        "Graduated with honors",
+        "Relevant coursework: Algorithms, Databases"
+      ]
     }
   ]
 }
+   
