@@ -114,7 +114,7 @@ const contactMe = () => {
               </div>
               <button
                 type="submit"
-                className="flex items-center gap-2 px-4 py-2 text-black rounded-full shadow-lg bg-gradient-to-r from-orange-300 to-gray-500 hover:scale-105"
+                className="flex items-center gap-2 px-4 py-2 text-white rounded-full shadow-lg hover:bg-green-200 bg-gray-700 text-2xl hover:text-black "
               >
                 send
               </button>
