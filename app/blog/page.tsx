@@ -28,9 +28,9 @@ function Page() {
 
             <Header/>
             <div>
-                <div className="bg-gray-500 flex flex-col justify-center items-center text-white min-h-96 gap-8 ">
-                    <h2 className="text-24px text-center">Keep up with Rachel's newest updates</h2>
-                    <p className="text-18px underline cursor-pointer">View the newest</p>
+                <div className="bg-gray-500 flex flex-col justify-center items-center text-white min-h-50 gap-8 ">
+                    <h2 className="text-24px text-center font-bold text-3xl">Enjoy The Blogs</h2>
+                    {/* <p className="text-18px underline cursor-pointer">View the newest</p> */}
 
                 </div>
                 <div className="flex flex-col md:flex-row justify-center items-center min-h-96 gap-8">
