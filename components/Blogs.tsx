@@ -13,10 +13,10 @@ type Blog = {
 }
 
 
-const Blogcard:React.FC<Blog> = ({ title, description1 , likes}) => {
+const Blogs:React.FC<Blog> = ({ title, description1 , likes}) => {
     return (
         <div className="w-fit flex-col space-y-6 container items-center border-b rounded-xl p-2">
-            <Image src={""} alt={"Rachel"} width={250} height={200} className="bg-gray-100"/>
+            <Image src={""} alt={"Rachel"} width={250} height={200} className="bg-gray-600"/>
             <h2 className="text-2xl">{title || "Title"}</h2>
             <p className="text-xl">{description1 || "Lorem Ipsum"}</p>
 
@@ -33,4 +33,4 @@ const Blogcard:React.FC<Blog> = ({ title, description1 , likes}) => {
     )
 }
 
-export default Blogcard;
+export default Blogs;

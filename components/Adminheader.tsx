@@ -26,7 +26,7 @@ function Admiheader() {
     };
     return (
         <div
-            className={`font-poppins h-screen space-y-8 pl-6 pr-8 py-8 bg-black text-white transition-all duration-200 ${isExpanded ? "w-80" : "w-24"
+            className={`font-poppins h-screen space-y-8 pl-6 pr-8 py-8 bg-gray-500 text-black transition-all duration-200 ${isExpanded ? "w-80" : "w-24"
             }`}
         >
             {/* Toggle Button */}
@@ -90,7 +90,7 @@ function Admiheader() {
                                 {/* Profile Settings */}
                                 <a
                                     href="/admin/profile"
-                                    className="px-4 py-2 text-gray-800 hover:bg-gray-100 flex items-center"
+                                    className="px-4 py-2 text-gray-600 hover:bg-gray-700 flex items-center"
                                 >
                                     <MdSettings className="mr-2"/> Profile
                                 </a>
@@ -98,7 +98,7 @@ function Admiheader() {
                                 {/* Logout */}
                                 <button
                                     onClick={() => setShowLogoutModal(true)}
-                                    className="w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100 flex items-center"
+                                    className="w-full text-left px-4 py-2 text-gray-200 hover:bg-gray-600 flex items-center"
                                 >
                                     <FiLogOut className="mr-2"/> Logout
                                 </button>
