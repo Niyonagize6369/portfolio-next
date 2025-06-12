@@ -1,0 +1,13 @@
+{
+  "footer": {
+    "socialLinks": [
+      { "name": "GitHub", "icon": "github", "url": "https://github.com/Niyonagize6369" },
+      { "name": "LinkedIn", "icon": "linkedin", "url": "https://www.linkedin.com/in/rachel-niyonagize-44b70031b/" }
+    ],
+    "links": [
+      { "name": "Home", "url": "/" },
+      { "name": "Contact", "url": "/contact" }
+    ],
+    "copyright": "© 2025 Rachel"
+  }
+}

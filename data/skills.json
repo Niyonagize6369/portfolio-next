@@ -1,0 +1,16 @@
+{
+  "technical": [
+    {"name": "HTML5", "level": "90%"},
+    {"name": "CSS3", "level": "85%"},
+    {"name": "JavaScript", "level": "80%"},
+    {"name": "React", "level": "75%"},
+    {"name": "Node.js", "level": "70%"}
+  ],
+  "professional": [
+    "Problem Solving",
+    "Team Collaboration",
+    "Agile Development",
+    "Communication",
+    "Time Management"
+  ]
+}

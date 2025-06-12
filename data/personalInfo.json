@@ -1,0 +1,19 @@
+
+{
+   "name":" Niyonagize Rachel",
+   "jpg": "profile.jpg",
+  "about": "I am a passionate developer...",
+  "info":"I'm a passionate web developer dedicated to crafting responsive,user-friendly websites. I specialize in React, JavaScript, and modern web technologies, with a strong focus on clean code, performance, and intuitive UI/UX design. My approach blends technical precision with creative problem-solving to deliver impactful digital experiences.I’m always learning and evolving to stay ahead in the ever-changing world of web development",
+
+
+  "skills": [
+    { "name": "JavaScript", "level": "80%" },
+    { "name": "React", "level": "75%" },
+    {"name": "HTML5", "level":"90%"},
+    {"name": "CSS3", "level":"70"},
+    {"name": "Git", "level":"90%"}
+
+  ],
+   "interest": 
+   ["Coding", "Music", "Traveling"]
+}

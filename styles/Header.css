@@ -1,0 +1,93 @@
+/* Header.css */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 99.4%;
+  padding: 1.5rem 0;
+  background-color: #5c5b5b;
+  box-shadow: 0 2px 15px rgba(89, 78, 78, 0.1);
+  z-index: 1000;
+}
+
+/* Navbar Container */
+.navbar {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Navigation List */
+.navbar ul {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Navigation Links */
+.navbar li a {
+  position: relative;
+  color: #f4eeee;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover Effect */
+.navbar li a:hover {
+  color: #f5f5fa;
+}
+
+/* Underline Animation */
+.navbar li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #1b1b1c;
+  transition: width 0.3s ease;
+}
+
+.navbar li a:hover::after {
+  width: 100%;
+}
+
+/* Active Link Style */
+.navbar li a.active {
+  color: #4a6cf7;
+  font-weight: 600;
+}
+
+.navbar li a.active::after {
+  width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar ul {
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .navbar {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar ul {
+    gap: 1rem;
+  }
+  
+  .navbar li a {
+    font-size: 0.9rem;
+  }
+}

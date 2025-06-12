@@ -1,0 +1,33 @@
+{
+  "experience": [
+    {
+      "id": 1,
+      "role": "IT SPECIALIST",
+      "company": "Tele10 Rwanda",
+      "period": "2018-2019",
+      "description": ["supporting endusers"]
+    },
+    {
+      "id": 2,
+      "role": "IT SPECIALIST",
+      "company": "National Electoral Commision",
+      "period": "2024",
+      "description": ["supporting endusers"]
+    }
+
+  ],
+  "education": [
+    {
+      "id": 1,
+      "degree": "bacherol in Business information technology",
+      "institution": "University of Rwanda",
+      "year": "2024"
+    },
+    {
+      "id": 2,
+      "degree": "Diploma in Computer Networking",
+      "institution": "COLLEGE ACEJ KARAMA",
+      "year": "2019"
+    }
+  ]
+}
