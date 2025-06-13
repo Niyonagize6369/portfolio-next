@@ -20,10 +20,10 @@ const contactMe = () => {
     const templateID = "template_kcaqurk";
     const publicKey = "wjSVdqqYRzladYY3x";
     const templateParams = {
-      to_name: "Rachel", // Receiver's name
-      from_name: formData.name, // Sender's name
-      message: formData.message, // User's message
-      reply_to: formData.email, // Reply email
+      to_name: "Rachel", 
+      from_name: formData.name,
+      message: formData.message, 
+      reply_to: formData.email,
     };
     emailjs
       .send(serviceID, templateID, templateParams, publicKey)
