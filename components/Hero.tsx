@@ -27,14 +27,14 @@ const Hero = () => {
             let's build quality in programing and design with our services
           </p>
           <button className="relative my-4">
-            <a
+            {/* <a
               href="#About Me"
               className="bg-gradient-to-r from-green-400 to-blue-500
               text-white hidden md:inline transform transition-transform duration-300
               hover:scale-105 px-8 py-2 rounded-full"
             >
               Show more...
-            </a>
+            </a> */}
           </button>
 
           <div className="flex mt-5 space-x-4 text-black cursor-pointer">

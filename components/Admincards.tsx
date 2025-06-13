@@ -4,8 +4,8 @@ import { useState } from "react";
 
 export default function Admincards() {
   const [data, setData] = useState([
-    { id: 1, title: "",description: "" },
-    { id: 2, title: "", description: "" },
+    { id: 1, title: "title",description: "" },
+    { id: 2, title: " description", description: "" },
   ]);
 
   const [form, setForm] = useState({ id: null, title: "", description: "" });

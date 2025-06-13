@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from "next/image";
-import { GoHeart } from "react-icons/go";
-import { GoComment } from "react-icons/go";
-import { IoIosShareAlt } from "react-icons/io";
+// import { GoHeart } from "react-icons/go";
+// import { GoComment } from "react-icons/go";
+// import { IoIosShareAlt } from "react-icons/io";
 import Link from 'next/link';
 
 
@@ -88,9 +88,9 @@ const Blogs:React.FC<Blog> = ({ title, description1 , likes}) => {
                     <h2 className="text-2xl">{data.title || "Title"}</h2>
                     <p className="text-xl">{data.description || "Lorem Ipsum"}</p>
                     <div className="flex justify-end gap-x-2 text-2xl items-center">
-                        <GoHeart className="cursor-pointer"/> <p className="text-lg">{data.likes || 2 }</p>
-                        <GoComment className="cursor-pointer"/>
-                        <IoIosShareAlt className="cursor-pointer"/>
+                       <p className="text-lg cursor-pointer bg-gray-600 text-white hover:bg-blue-500 rounded-2xl border">Read More</p>
+                        {/* <GoComment className="cursor-pointer"/> */}
+                        {/* <IoIosShareAlt className="cursor-pointer"/> */}
                     </div>
                     <div className="flex justify-end">
                         <Link href={"details"}>
