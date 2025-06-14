@@ -2,6 +2,7 @@ import React from 'react';
 import experienceData from "../data/experience.json";
 import educationData from "../data/experience.json";
 import "../styles/Experience.css";
+// import ExperienceCard from './ExperienceCard';
 
 const Experience = () => {
   return (
@@ -13,6 +14,11 @@ const Experience = () => {
         <div>
           <h2 className='font-bold text-2xl text-center mb-4'>EXPERIENCE</h2>
           <div>
+            {/* {experienceData?.experience?.map((experience, index) => (
+              <ExperienceCard
+                key={index} {...experience}/>
+            ))} */}
+            
             {
               experienceData?.experience?.map((exp, index) => (
                 <div key={index} className='mb-6 border border-gray-500 
@@ -20,11 +26,10 @@ const Experience = () => {
                   <p className='font-bold text-xl'>{exp.role}</p>
                   <p className='text-gray-700'>{exp.company}</p>
                   <p className='text-gray-500'>{exp.period}</p>
-                  <ul className='list-disc list-inside text-gray-600'>
-                    {exp.description?.map((item, idx) => (
-                      <li   className="list-none " key={idx}>{item}</li>
-                    ))}
-                  </ul>
+                  <p className='text-gray-500'>{exp.description}</p>
+
+                  {/* <ul className='list-disc list-inside text-gray-600'>
+                  </ul> */}
                 </div>
               ))
             }

@@ -81,7 +81,7 @@ function Signup() {
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleChange}
-                    className="bg-grey text-white border border-gray-800 rounded-2xl  text-[18px] w-90"
+                    className="bg-grey-400 text-white border border-gray-800 rounded-2xl  text-[18px] w-90"
                     required
                 /><br/>
 
@@ -129,7 +129,7 @@ function Signup() {
                         required
                     />
                     <label htmlFor="conditions" className="text-[14px] leading-none items-center">
-                        By ticking this box, I certify that I have read and understood the terms & conditions of this platform.
+                     Agree terms and Conditions.
                     </label>
                 </div>
 

@@ -70,7 +70,7 @@ function Login() {
 
                 <button
                     type="submit"
-                    className="bg-gray w-full my-8 text-white border border-white px-6 py-2 rounded-xl text-[18px] font-bold hover:bg-green hover:text-black hover:border-green cursor-pointer transition-colors duration-300"
+                    className="bg-gray-400 w-full my-8 text-white-900 border border-white px-6 py-2 rounded-xl text-[18px] font-bold hover:bg-green hover:text-black hover:border-green cursor-pointer transition-colors duration-300"
                 >
                     Login
                 </button>

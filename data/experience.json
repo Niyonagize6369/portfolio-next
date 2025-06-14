@@ -5,14 +5,14 @@
       "role": "IT SPECIALIST",
       "company": "Tele10 Rwanda",
       "period": "2018-2019",
-      "description": ["supporting end users", "troubleshooting hardware and software issues", "maintaining IT infrastructure"]
+      "description":"supporting end users maintaining IT infrastructure troubleshooting hardware and software issues"
     },
     {
       "id": 2,
       "role": "IT SPECIALIST",
       "company": "National Electoral Commision",
       "period": "2024",
-      "description": ["supporting end users ", "troubleshooting hardware and software issues", "maintaining IT infrastructure"]
+      "description":"supporting end users maintaining IT infrastructure troubleshooting hardware and software issues"
     }
 
   ],

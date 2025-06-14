@@ -4,91 +4,34 @@ import Image from "next/image";
 // import { GoComment } from "react-icons/go";
 // import { IoIosShareAlt } from "react-icons/io";
 import Link from 'next/link';
+import Blog1 from "@/public/assets/blog1.jpg";
+import Blog2 from "@/public/assets/blog2.jpg";
+import Blog3 from "@/public/assets/blog3.jpg";
 
-
-const BlogData = [
-  {
-    id: 1,
-    image:"/assets/blog1.jpg",
-    title: "women Ethnic",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    likes: 100,
-  },
-  {
-    id: 2,
-    image:"/assets/blog2.jpg",
-    title: "women western",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    likes: 300,
-  },
-  {
-    id: 3,
-    image: "/assets/blog3.jpg",
-    title: "goggles",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    likes: 500,
-  },
-   {
-    id: 4,
-    image: "/assets/blog4.jpg",
-    title: "goggles",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    likes: 1000,
-  },
-//    {
-//     id: 3,
-//     image: "/assets/blog3.jpg",
-//     title: "goggles",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-//     likes: 5,
-//   },
-//    {
-//     id: 3,
-//     image: "/assets/blog3.jpg",
-//     title: "goggles",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-//     likes: 5,
-//   },
-//    {
-//     id: 3,
-//     image: "/assets/blog3.jpg",
-//     title: "goggles",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-//     likes: 5,
-//   },
-//    {
-//     id: 3,
-//     image: "/assets/blog3.jpg",
-//     title: "goggles",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-//     likes: 5,
-//   },
-//    {
-//     id: 3,
-//     image: "/assets/blog3.jpg",
-//     title: "goggles",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-//     likes: 5,
-//   },
-];
-
-type Blog = {
-    title?: string;
-    description1?: string;
-    likes?: number;
+const Rachel: Record<string, string> = {
+  "women Ethnic": Blog1.src,
+  "women western": Blog2.src,
+  "goggles": Blog3.src,
 }
 
 
-const Blogs:React.FC<Blog> = ({ title, description1 , likes}) => {
+type Blog = {
+    title: string;
+    description1?: string;
+    likes: number;
+    image: string
+}
+
+
+const Blogs:React.FC<Blog> = ({ title, description1 , likes,image}) => {
     return (
-<div className="w-fit flex-col space-y-6 container items-center border-b rounded-xl p-2">
-            {BlogData.map((data) => (
-                <div key={data.id} className="flex flex-col items-center">
-                    <Image src={data.image} alt={data.title} width={250} height={200} className="bg-gray-600"/>
-                    <h2 className="text-2xl">{data.title || "Title"}</h2>
-                    <p className="text-xl">{data.description || "Lorem Ipsum"}</p>
+<div className="w-fit flex flex-col space-y-6 container items-center border-b rounded-xl p-2">
+                <div className="flex flex-col items-center prose prose-lg prose-blue">
+                    <Image src={image} alt={title} width={250} height={200} className="bg-gray-600"/>
+                    <h2 className="text-2xl">{title || "Title"}</h2>
+                    <p className="text-xl">{description1 || "Lorem Ipsum"}</p>
                     <div className="flex justify-end gap-x-2 text-2xl items-center">
-                       <p className="text-lg cursor-pointer bg-gray-600 text-white hover:bg-blue-500 rounded-2xl border">Read More</p>
+                       <p className="text-lg cursor-pointer bg-gray-600 text-white hover:bg-blue-500 rounded-2xl p-3 border">Read More</p>
                         {/* <GoComment className="cursor-pointer"/> */}
                         {/* <IoIosShareAlt className="cursor-pointer"/> */}
                     </div>
@@ -98,7 +41,6 @@ const Blogs:React.FC<Blog> = ({ title, description1 , likes}) => {
                         </Link>
                     </div>
                 </div>
-            ))}
         </div>
     );
 };
