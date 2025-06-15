@@ -5,14 +5,14 @@
       "role": "IT SPECIALIST",
       "company": "Tele10 Rwanda",
       "period": "2018-2019",
-      "description":"supporting end users maintaining IT infrastructure troubleshooting hardware and software issues"
+      "description":"supporting end users maintaining IT infrastructure"
     },
     {
       "id": 2,
       "role": "IT SPECIALIST",
       "company": "National Electoral Commision",
       "period": "2024",
-      "description":"supporting end users maintaining IT infrastructure troubleshooting hardware and software issues"
+      "description":"supporting end users maintaining IT infrastructures"
     }
 
   ],
@@ -24,7 +24,7 @@
       "institution": "University of Rwanda",
       "year": "2021-2024",
       "details": [
-        "Graduated with honors Relevant coursework Algorithms, Databases"
+        " Relevant coursework Algorithms, Databases"
         
       ]
     },
@@ -34,8 +34,7 @@
       "institution": "University of Rwanda",
       "year": "2021-2024",
       "details": [
-        "Graduated with honors",
-        "Relevant coursework: Algorithms, Databases"
+        "Relevant coursework: Databases"
       ]
     }
   ]

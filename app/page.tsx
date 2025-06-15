@@ -10,18 +10,16 @@ import "./globals.css";
 
 export default function Home() {
   return (
-    <div>
-      <main >
-        <Header/>
-        <Hero/>
-        <Projects/>
-        <Experience/>
-        <About/>
-        <Contact/>
-        <Footer/>
-        
+    <div className="bg-gray-300">
+      <main>
+        <Header />
+        <Hero />
+        <Projects />
+        <Experience />
+        <About />
+        <Contact />
+        <Footer />
       </main>
-    
     </div>
   );
 }
