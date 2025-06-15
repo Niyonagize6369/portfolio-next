@@ -5,13 +5,14 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
+    const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         setErrorMsg('');
 
         try {
-            const res = await fetch('http://localhost:5000/api/v1/auth/login', {
+            const res = await fetch(`${apiUrl}/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -20,16 +21,17 @@ function Login() {
             });
 
             if (res.ok) {
-                const data = await res.json();
+                const {data} = await res.json();
+                console.log('Login successful:', data.token);
                 localStorage.setItem('token', data.token);
 
-                if (typeof window !== 'undefined') {
-                    if (data.role === 'admin') {
-                        window.location.href = '/';
-                    } else {
-                        window.location.href = '/admin/dashboard';
-                    }
-                }
+                // if (typeof window !== 'undefined') {
+                //     if (data.role === 'admin') {
+                //         window.location.href = '/';
+                //     } else {
+                //         window.location.href = '/admin/dashboard';
+                //     }
+                // }
             } else {
                 const errData = await res.json();
                 setErrorMsg(errData.message || 'Login failed');

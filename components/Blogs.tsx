@@ -17,19 +17,20 @@ const Rachel: Record<string, string> = {
 
 type Blog = {
     title: string;
-    description1?: string;
+    content?: string;
     likes: number;
     image: string
+    index?: number;
 }
 
 
-const Blogs:React.FC<Blog> = ({ title, description1 , likes,image}) => {
+const Blogs:React.FC<Blog> = ({ title, content , likes,image,index}) => {
     return (
 <div className="w-fit flex flex-col space-y-6 container items-center border-b rounded-xl p-2">
                 <div className="flex flex-col items-center prose prose-lg prose-blue">
-                    <Image src={image} alt={title} width={250} height={200} className="bg-gray-600"/>
+                    <Image src={image||`/assets/blog${index}.jpg`} alt={title} width={250} height={200} className="bg-gray-600"/>
                     <h2 className="text-2xl">{title || "Title"}</h2>
-                    <p className="text-xl">{description1 || "Lorem Ipsum"}</p>
+                    <p className="text-xl">{content || "Lorem Ipsum"}</p>
                     <div className="flex justify-end gap-x-2 text-2xl items-center">
                        <p className="text-lg cursor-pointer bg-gray-600 text-white hover:bg-blue-500 rounded-2xl p-3 border">Read More</p>
                         {/* <GoComment className="cursor-pointer"/> */}

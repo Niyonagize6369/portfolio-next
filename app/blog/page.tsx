@@ -3,74 +3,11 @@ import React from 'react';
 import Blogcards from "@/components/Blogs";
 import Header from '@/components/Header';
 
-const BlogData = [
-  {
-    id: 1,
-    image:"/assets/blog1.jpg",
-    title: "women Ethnic",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    likes: 100,
-  },
-  {
-    id: 2,
-    image:"/assets/blog2.jpg",
-    title: "women western",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    likes: 300,
-  },
-  {
-    id: 3,
-    image: "/assets/blog3.jpg",
-    title: "goggles",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    likes: 500,
-  },
-   {
-    id: 4,
-    image: "/assets/blog4.jpg",
-    title: "goggles",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    likes: 1000,
-  },
-//    {
-//     id: 3,
-//     image: "/assets/blog3.jpg",
-//     title: "goggles",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-//     likes: 5,
-//   },
-//    {
-//     id: 3,
-//     image: "/assets/blog3.jpg",
-//     title: "goggles",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-//     likes: 5,
-//   },
-//    {
-//     id: 3,
-//     image: "/assets/blog3.jpg",
-//     title: "goggles",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-//     likes: 5,
-//   },
-//    {
-//     id: 3,
-//     image: "/assets/blog3.jpg",
-//     title: "goggles",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-//     likes: 5,
-//   },
-//    {
-//     id: 3,
-//     image: "/assets/blog3.jpg",
-//     title: "goggles",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-//     likes: 5,
-//   },
-];
+ async function Page() {
+const Data = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/blog/get`);
+  const response = await Data.json();
 
-
-function Page() {
+  const posts = response.data.post;
     return (
         <div>
 
@@ -82,8 +19,8 @@ function Page() {
 
                 </div>
                 <div className="flex flex-col md:flex-row justify-center items-center min-h-96 gap-8">
-                    {BlogData.map((blog, index) => (
-                        <Blogcards  key={index} {... blog} />
+                    {posts.map((blog:any, index:number) => (
+                        <Blogcards  key={index} {... blog} index={index + 1} />
                     ))}
 
                 </div>

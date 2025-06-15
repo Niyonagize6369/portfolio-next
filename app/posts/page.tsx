@@ -62,7 +62,7 @@ function Page() {
     }, []); 
 
     const handleDelete = async(id:number) => {
-      await axios.delete(`http://localhost:5000/api/v1/blog/get/${id}`)
+      await axios.delete(`${process.env.NEXT_PUBLIC_BACKEND_URL}/blog/delete/${id}`)
       const filterData = posts.filter(post =>post.id !== id)
       setPosts(filterData)
     }
