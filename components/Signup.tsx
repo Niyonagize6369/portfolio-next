@@ -40,7 +40,7 @@ function Signup() {
 
         try {
             // API to register user
-            const res = await fetch('http://127.0.0.1:8000/auth/signup', {
+            const res = await fetch('http://localhost:5000/api/v1/auth/signup', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),

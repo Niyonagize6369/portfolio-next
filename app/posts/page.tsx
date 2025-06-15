@@ -3,44 +3,40 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { title } from 'process';
+import { Content } from 'next/font/google';
 
-// Type definition for a single post object
+
 type Post = {
     id: number;
     title: string;
     content: string;
 };
 
-// Type definition for the pagination data returned by your API
-type PaginationInfo = {
-    currentPage: number;
-    totalPages: number;
-    totalItems: number;
-    itemsPerPage: number;
-    hasNextPage: boolean;
-    hasPreviousPage: boolean;
-};
+
+// type PaginationInfo = {
+//     currentPage: number;
+//     totalPages: number;
+//     totalItems: number;
+//     itemsPerPage: number;
+//     hasNextPage: boolean;
+//     hasPreviousPage: boolean;
+// };
 
 function Page() {
-    // State for the posts on the current page
     const [posts, setPosts] = useState<Post[]>([]);
     
-    // State for loading and error UI
+    
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     
-    // --- NEW: State to manage pagination ---
-    // const [currentPage, setCurrentPage] = useState(1);
-    // const [paginationInfo, setPaginationInfo] = useState<PaginationInfo | null>(null);
-
-    // This effect will now re-run whenever `currentPage` changes
     useEffect(() => {
         const fetchRecords = async () => {
-            setLoading(true); // Show loading spinner for each page change
+            setLoading(true); 
             setError(null);
 
             try {
-                // The URL now includes the current page number as a query parameter
+               
                 const response = await axios.get(`http://localhost:5000/api/v1/blog/get`);
                 
                 console.log("API Response for Page " + ":", response.data);
@@ -63,41 +59,56 @@ function Page() {
         };
 
         fetchRecords();
-    }, []); // The dependency array ensures this runs on mount AND when currentPage changes
+    }, []); 
 
-    // Render loading state
+    const handleDelete = async(id:number) => {
+      await axios.delete(`http://localhost:5000/api/v1/blog/get/${id}`)
+      const filterData = posts.filter(post =>post.id !== id)
+      setPosts(filterData)
+    }
+   
     if (loading) {
         return <div>Loading posts...</div>;
     }
 
-    // Render error state
+    
     if (error) {
         return <div style={{ color: 'red' }}>Error: {error}</div>;
     }
 
-    // Render the main content
+    
     return (
-        <div>
-            <div>
-                <h1>Blog Posts</h1>
-                <Link href='/posts/create'>Create New Post</Link>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Title</th>
-                            <th>Content</th>
-                            <th>Actions</th>
+        <div className='min-h-screen bg-blue-200 '>
+            <div className='max-w-6xl mx-auto p-6'>
+                <h1 className='font-bold text-3xl flex justify-center'>Blog Posts</h1>
+                <Link href='/posts/create' className='px-4 border rounded-3xl
+                 p-1 gap-1 bg-blue-400 hover hover:bg-white
+                 text-xl font-bold'>Create New Post</Link>
+                <table className='divide-y divide-gyay-200 w-full mt-6'>
+                    <thead className='bg-blue-100   border  text-black font-bold '>
+                        <tr className='bg-gray-50'>
+                            <th scope='col' className='px-6 py-3 text-start font-medium
+                            text-gray-500 border  uppercase'>Id</th>
+                            <th scope='col'  className='px-6 py-3 text-start font-medium
+                            text-gray-500 border  uppercase'>Title</th>
+                            <th scope='col'  className='px-6 py-3 text-start font-medium
+                            text-gray-500 border  uppercase'>Content</th>
+                            <th scope='col'  className='px-6 py-3 text-start   font-medium
+                            text-gray-500 border  uppercase'>Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className='bg-white divide-y divide-gray-200'>
                         {posts.map((post) => (
                             <tr key={post.id}>
-                                <td>{post.id}</td>
-                                <td>{post.title}</td>
-                                <td>{post.content}</td>
-                                <td>
-                                    <button>Delete</button>
+                                <td className='px-6 py-3 text-gray-800'>{post.id}</td>
+                                <td className='px-6 py-3 text-gray-800'>{post.title}</td>
+                                <td className='px-6 py-3 text-gray-800'>{post.content}</td>
+                                <td className='space-x-4 px-6 py-3 text-end'>
+                                    <Link href={`/posts/${post.id}?mode=read`}><button className='text-blue-600 font-bold border rounded-2xl hover:bg-gray-400 hover:text-white gap-2 px-4 py-2'>Read</button></Link>
+                                     <Link href={`/posts/${post.id}?mode=edit`}><button className='text-blue-600 font-bold border rounded-2xl hover:bg-gray-400 hover:text-white gap-2 px-4 py-2'>Edit</button></Link>
+                                    <button className='text-red-600 font-bold border rounded-2xl hover:bg-gray-400 hover:text-white gap-2 px-4 py-2
+                                    onClick={() => handleDelete (post.id)}'>Delete</button>
+
                                 </td>
                             </tr>
                         ))}
