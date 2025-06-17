@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { strict } from "assert";
 
 export default function Admincards() {
   const [data, setData] = useState([]);
@@ -10,7 +11,11 @@ export default function Admincards() {
   const [isEditing, setIsEditing] = useState(false);
 
   const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
-  const token = localStorage.getItem("token");
+  const [token, setToken] = useState(null);
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    setToken(storedToken);
+  }, []);
   useEffect(() => {
     const fetchData = async () => {
       try {

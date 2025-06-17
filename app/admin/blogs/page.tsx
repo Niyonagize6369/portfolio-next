@@ -1,8 +1,17 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import Adminheader from "@/components/Adminheader";
 import Admincards from "@/components/Admincards";
+import { isLoggedIn } from "@/utils/auth";
+import { useRouter } from "next/navigation";
 
 function Page() {
+  const router = useRouter();
+  useEffect(() => {
+    if (!isLoggedIn()) {
+      router.push("/login");
+    }
+  }, []);
   return (
     <>
       <div className="flex w-full flex-row align-items-center bg-gray-500">
