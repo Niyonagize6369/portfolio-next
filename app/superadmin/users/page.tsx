@@ -18,13 +18,13 @@ function Page() {
     try {
       const token = localStorage.getItem("token");
       if (!token) return setError("No token found");
-      // console.log("Fetching users with token:", token);
+      console.log("Fetching users with token:", token);
       const res = await axios.get("http://localhost:5000/api/v1/users/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      // console.log("API Response:", res);
+      console.log("API Response:", res);
       setUsers(res.data.data);
     } catch (err: any) {
       console.error(err);
