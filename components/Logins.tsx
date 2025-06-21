@@ -37,7 +37,7 @@ function Login() {
             localStorage.setItem("role", "superadmin");
           } else {
             localStorage.setItem("role", "user");
-            window.location.href = "/home";
+            window.location.href = "/";
           }
         }
       } else {
