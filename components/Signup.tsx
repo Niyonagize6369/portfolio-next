@@ -4,9 +4,11 @@ import axios from "axios";
 
 function Signup() {
   const [formData, setFormData] = useState({
-    userName: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
+    confirmPassword: "",
     role: "user",
     conditions: false,
   });
@@ -14,7 +16,6 @@ function Signup() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  // Handle input change
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
@@ -23,7 +24,6 @@ function Signup() {
     }));
   }
 
-  // Form submit handler
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
@@ -34,35 +34,35 @@ function Signup() {
       return;
     }
 
-    try {
-      const { userName, email, password, role } = formData;
-      const username = `${userName}`;
+    if (formData.password !== formData.confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
 
-      const res = await axios.post("http://localhost:5000/api/v1/auth/signup", {
-        username,
-        email,
-        password,
-        role,
-      });
+    try {
+      const { firstName, lastName, email, password, role } = formData;
+      const name = `${firstName} ${lastName}`;
+
+      const res = await axios.post(
+        "http://127.0.0.1:5000/api/v1/auth/signup",
+        {
+          name,
+          email,
+          password,
+          role,
+        }
+      );
 
       if (res.status === 201) {
         setSuccess(
           "Signup successful! Please check your email to verify your account."
         );
-        setFormData({
-          userName: "",
-          email: "",
-          password: "",
-          role: "user",
-          conditions: false,
-        });
       }
     } catch (err: any) {
-      console.log("Signup Error:", err.response?.data);
       if (err.response?.data?.message) {
         setError(err.response.data.message);
       } else {
-        setError("Something went wrong. Please try again.");
+        setError("Something went wrong");
       }
     }
   }
@@ -70,44 +70,81 @@ function Signup() {
   return (
     <div className="flex flex-col items-center justify-center">
       <form className="items-center" onSubmit={handleSubmit}>
-        <label htmlFor="firstName" className="text-[16px] text-grey">
-          UserName
+        <label htmlFor="firstName" className="text-[16px] text-grey-100">
+          First name
         </label>
+        <br />
         <input
           type="text"
-          id="userName"
-          name="userName"
-          value={formData.userName}
+          id="firstName"
+          name="firstName"
+          value={formData.firstName}
           onChange={handleChange}
-          className="bg-grey text-white border border-gray-800 rounded-2xl text-[18px] w-90"
+          className="border border-white text-black text-[18px] w-90"
           required
         />
+        <br />
 
-        <label htmlFor="email" className="text-[16px] text-grey">
+        <label htmlFor="lastName" className="text-[16px] text-grey-500">
+          Last name
+        </label>
+        <br />
+        <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          value={formData.lastName}
+          onChange={handleChange}
+          className="border border-white text-black text-[18px] w-90"
+          required
+        />
+        <br />
+
+        <label htmlFor="email" className="text-[16px] text-grey-500">
           Email
         </label>
+        <br />
         <input
           type="email"
           id="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
-          className="bg-grey text-white border border-gray-800 rounded-2xl text-[18px] w-90"
+          className="border border-white text-black text-[18px] w-90"
           required
         />
+        <br />
 
-        <label htmlFor="password" className="text-[16px] text-grey">
+        <label htmlFor="password" className="text-[16px] text-grey-500">
           Password
         </label>
+        <br />
         <input
           type="password"
           id="password"
           name="password"
           value={formData.password}
           onChange={handleChange}
-          className="bg-grey text-white border border-gray-800 rounded-2xl text-[18px] w-90"
+          className="border border-white text-black text-[18px] w-90"
           required
         />
+        <br />
+
+        <label htmlFor="confirmPassword" className="text-[16px] text-grey-500">
+          Confirm Password
+        </label>
+        <br />
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="border border-white text-black text-[18px] w-90"
+          required
+        />
+        <br />
+
         <div className="flex w-[300px] gap-2 pt-8">
           <input
             type="checkbox"
@@ -121,16 +158,17 @@ function Signup() {
             htmlFor="conditions"
             className="text-[14px] leading-none items-center"
           >
-            Agree to terms and conditions.
+            Agree terms & conditions
           </label>
         </div>
 
-        {error && <p className="text-red-500 mt-2">{error}</p>}
-        {success && <p className="text-green-500 mt-2">{success}</p>}
+        {error && <p className="text-red-500 mt-2 w-96">{error}</p>}
+        {success && <p className="text-green-500 mt-2 w-96">{success}</p>}
 
         <button
           type="submit"
-          className="bg-gray w-full my-8 text-white border border-white px-6 py-2 rounded-xl text-[18px] font-bold hover:bg-green hover:text-black hover:border-green cursor-pointer transition-colors duration-300"
+          className="bg-gray w-full my-8 text-white border border-white px-6 py-2 rounded-xl text-[18px] font-bold hover:bg-green hover:text-black
+           hover:border-green cursor-pointer transition-colors duration-300"
         >
           Register
         </button>

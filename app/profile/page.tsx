@@ -13,9 +13,7 @@ function Page() {
   const [posts, setPosts] = useState<Post[]>([]);
 
   const fetchRecords = async () => {
-    const response = await axios.get(
-      "http://localhost:5000/api/v1/posts"
-    );
+    const response = await axios.get("http://localhost:5000/api/v1/post");
     console.log("API Response:", response.data);
     setPosts(response.data.data.posts);
   };

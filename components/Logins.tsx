@@ -4,15 +4,14 @@ import React, { useState } from "react";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMsg, setErrorMsg] = useState("");
-  const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+  const [error, seterror] = useState("");
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    setErrorMsg("");
+    seterror("");
 
     try {
-      const res = await fetch(`${apiUrl}/auth/login`, {
+      const res = await fetch("http://127.0.0.1:5000/api/v1/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -21,26 +20,32 @@ function Login() {
       });
 
       if (res.ok) {
-        const { data } = await res.json();
-        console.log("Login successful:", data.token);
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("role", data.user.role);
+        const data = await res.json();
+        console.log("Login successful:", data);
+        localStorage.setItem("token", data.data.token);
+        localStorage.setItem("userId", data.data.userId);
+        localStorage.setItem("role", JSON.stringify(data.data.user));
 
         if (typeof window !== "undefined") {
-          if (data.role === "admin") {
+          const role = data.data.user.role;
+
+          if (role === "admin") {
             window.location.href = "/admin/dashboard";
-            // localStorage.setItem("role", "admin");
+            localStorage.setItem("role", "admin");
+          } else if (role === "superadmin") {
+            window.location.href = "/superadmin/dashboard";
+            localStorage.setItem("role", "superadmin");
           } else {
-            window.location.href = "/blogs";
-            // localStorage.setItem("role", "user");
+            localStorage.setItem("role", "user");
+            window.location.href = "/home";
           }
         }
       } else {
         const errData = await res.json();
-        setErrorMsg(errData.message || "Login failed");
+        seterror(errData.message || "Login failed");
       }
     } catch (error) {
-      setErrorMsg("Network error");
+      seterror("Network error");
       console.error(error);
     }
   };
@@ -48,7 +53,7 @@ function Login() {
   return (
     <div className="flex flex-col items-center justify-center">
       <form className="items-center" onSubmit={handleSubmit}>
-        <label htmlFor="email" className="text-[16px] text-grey">
+        <label htmlFor="email" className="text-[16px] text-grey-500">
           Email
         </label>
         <br />
@@ -56,14 +61,14 @@ function Login() {
           type="email"
           id="email"
           name="email"
-          className="bg-grey text-white border border-gray-800 rounded-2xl text-[18px] w-90"
+          className="border border-white text-black text-[18px] w-90"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
         <br />
 
-        <label htmlFor="password" className="text-[16px] text-grey">
+        <label htmlFor="password" className="text-[16px] text-grey-500">
           Password
         </label>
         <br />
@@ -71,20 +76,24 @@ function Login() {
           type="password"
           id="password"
           name="password"
-          className="bg-grey text-white text-[18px] w-90 border border-gray-800 rounded-2xl"
+          className="border border-white text-black text-[18px] w-90"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
         <br />
 
-        {errorMsg && <p className="text-red-500">{errorMsg}</p>}
+        <a
+          href="/auth/forgot-password"
+          className="underline text-green text-sm"
+        >
+          Forgot Password?
+        </a>
+        {error && <p className="text-red-500 w-96">{error}</p>}
 
         <button
           type="submit"
-          className="bg-gray-400 w-full my-8 text-white-900 border
-           border-white px-6 py-2 rounded-xl text-[18px] font-bold hover:bg-green
-            hover:text-black hover:border-green cursor-pointer transition-colors duration-300"
+          className="bg-gray-600 w-full my-8 text-white border border-white px-6 py-2 rounded-xl text-[18px] font-bold hover:bg-green hover:text-black hover:border-green cursor-pointer transition-colors duration-300"
         >
           Login
         </button>

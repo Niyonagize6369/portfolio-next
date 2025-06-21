@@ -107,14 +107,18 @@ const contactMe = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="w-full p-2 bg-gray-200 border border-gray-600 rounded focus:outline-none focus:border-gray-400"
+                  className="w-full p-2 bg-gray-200 border
+                   border-gray-600 rounded 
+                  focus:outline-none focus:border-gray-400"
                   rows={5}
                   placeholder="Enter Your Message"
                 />
               </div>
               <button
                 type="submit"
-                className="flex items-center gap-2 px-4 py-2 text-white rounded-full shadow-lg hover:bg-green-200 bg-gray-700 text-2xl hover:text-black "
+                className="flex items-center gap-2 px-4 py-2
+                 text-white rounded-full shadow-lg
+                 hover:bg-green-200 bg-gray-700 text-2xl hover:text-black "
               >
                 send
               </button>

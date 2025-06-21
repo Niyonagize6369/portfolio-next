@@ -1,161 +1,39 @@
-"use client";
+import React from "react";
+import { CiEdit } from "react-icons/ci";
+import { MdDeleteOutline } from "react-icons/md";
+import { BsThreeDotsVertical } from "react-icons/bs";
 
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { strict } from "assert";
-
-export default function Admincards() {
-  const [data, setData] = useState([]);
-
-  const [form, setForm] = useState({ id: null, title: "", content: "" });
-  const [isEditing, setIsEditing] = useState(false);
-
-  const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
-  const [token, setToken] = useState(null);
-  useEffect(() => {
-    const storedToken = localStorage.getItem("token");
-    setToken(storedToken);
-  }, []);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const Data = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/blog/get`
-        );
-        const response = await Data.json();
-
-        const posts = response.data.post;
-        setData(posts);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
-  }, []);
-
-  // Handle form input changes
-  const handleChange = (e: any) => {
-    console.log("Form change:", e.target.name, e.target.value);
-    // Update the form state with the new input value
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  // Add or update
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    const { title, content } = form;
-
-    console.log(`${apiUrl}/blog/create`);
-    const response = await axios.post(
-      `${apiUrl}/blog/create`,
-      { title, content },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    console.log("Response from server:", response.data);
-    setForm({ id: null, title: "", content: "" });
-  };
-
-  // Edit button
-  const handleEdit = async (item: any) => {
-    const { title, content } = form;
-    try {
-      setForm(item);
-      setIsEditing(true);
-      await axios.put(
-        `${apiUrl}/blog/update/${item.id}`,
-        { title, content },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-    } catch (error) {
-      console.error("Error fetching blog for edit:", error);
-    }
-  };
-
-  // Delete button
-  const handleDelete = async (id: number) => {
-    try {
-      alert("Are sure to delete this blog?");
-      await axios.delete(`${apiUrl}/blog/delete/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setData(data.filter((item: any) => item.id !== id));
-    } catch (error) {
-      console.error("Error deleting blog:", error);
-    }
-  };
-
+type AdmincardsProps = {
+  id: number;
+  title: string;
+  content: string;
+  imageUrl: string;
+  category: string;
+  likes?: number;
+  isPublished?: boolean;
+};
+const Admincards: React.FC<AdmincardsProps> = ({
+  title,
+  content,
+  imageUrl,
+  likes,
+  category,
+  isPublished,
+}) => {
   return (
-    <div className="max-w-md mx-auto mt-10">
-      <h2 className="text-2xl font-bold mb-4">
-        {isEditing ? "Edit Blog" : "Add Blog"}
-      </h2>
-
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          type="text"
-          name="title"
-          placeholder="Title"
-          value={form.title}
-          onChange={handleChange}
-          className="w-full p-2 border rounded"
-          required
-        />
-        <input
-          type="text"
-          name="content"
-          placeholder="content"
-          value={form.content}
-          onChange={handleChange}
-          className="w-full p-2 border rounded"
-          required
-        />
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded"
-        >
-          {isEditing ? "Update" : "Add"}
-        </button>
-      </form>
-
-      <h3 className="text-xl font-semibold mt-8 mb-4">Blogs List</h3>
-      <ul className="space-y-3">
-        {data.map((item: any) => (
-          <li
-            key={item.id}
-            className="border p-3 rounded flex justify-between items-center"
-          >
-            <div>
-              <div className="font-semibold">{item.title}</div>
-              <div className="text-gray-500">{item.content}</div>
-            </div>
-            <div className="space-x-2 gap-3">
-              <button
-                onClick={() => handleEdit(item)}
-                className="bg-yellow-400 text-white mt-3 px-3 py-1 rounded"
-              >
-                Edit
-              </button>
-              <button
-                onClick={() => handleDelete(item.id)}
-                className="bg-red-500 text-white px-3 py-1 rounded"
-              >
-                Delete
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
+    <div className="flex border-2 p-8 rounded-3xl justify-between items-center w-full">
+      <div className="flex flex-col justify-center items-start w-3/4">
+        <h2 className="text-24px">{title}</h2>
+        <p className="text-18px font-bold">{content}</p>
+        <p>{likes}</p>
+        <p>{category}</p>
+      </div>
+      <div className="flex justify-between items-end text-4xl gap-6">
+        <CiEdit className="hover:scale-109 cursor-pointer" />
+        <MdDeleteOutline className="text-red-500 hover:scale-109 cursor-pointer" />
+      </div>
     </div>
   );
-}
+};
+
+export default Admincards;

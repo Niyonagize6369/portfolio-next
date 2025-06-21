@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Adminheader from "@/components/Adminheader";
+import Adminheader from "@/components/Superadminnav";
 import axios from "axios";
 
 type User = {
@@ -18,13 +18,13 @@ function Page() {
     try {
       const token = localStorage.getItem("token");
       if (!token) return setError("No token found");
-
+      // console.log("Fetching users with token:", token);
       const res = await axios.get("http://localhost:5000/api/v1/users/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-
+      // console.log("API Response:", res);
       setUsers(res.data.data);
     } catch (err: any) {
       console.error(err);
@@ -78,14 +78,14 @@ function Page() {
   }, []);
 
   return (
-    <div className="flex w-full flex-row align-items-center bg-gray">
+    <div className="flex w-full flex-row align-items-center bg-gray-500">
       <Adminheader />
-      <div className="bg-gray min-h-screen text-white flex flex-col items-center px-16 gap-8 w-full">
+      <div className="bg-gray-700 min-h-screen text-white flex flex-col items-center px-16 gap-8 w-full">
         <h2 className="text-4xl font-bold text-start py-8">Users</h2>
         {error && <p className="text-red-500">{error}</p>}
         <table className="w-full table-auto border-collapse border border-white">
           <thead>
-            <tr className="bg-gray text-white">
+            <tr className="bg-gray-500 text-white font-bold">
               <th className="border border-white px-4 py-2">Number</th>
               <th className="border border-white px-4 py-2">Name</th>
               <th className="border border-white px-4 py-2">Email</th>
@@ -107,6 +107,7 @@ function Page() {
                   >
                     <option value="user">User</option>
                     <option value="admin">Admin</option>
+                    <option value="superAdmin">Super Admin</option>
                   </select>
                 </td>
                 <td className="border border-white px-4 py-2">

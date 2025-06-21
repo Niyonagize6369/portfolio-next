@@ -8,7 +8,18 @@ function Page() {
 
   return (
     <div className="bg-gray-700 min-h-screen flex flex-col lg:flex-row text-white items-center justify-evenly lg:justify-between text-24px px-20">
-      {/* <p className="text-48px text-center w-1/2">Admin Management System</p> */}
+      <div className="flex flex-col text-center gap-5">
+        {/* <p className="text-48px">Welcome!</p>
+        <p>Login to view</p>
+        <a href="/">
+          <button
+            className={`w-48 px-6 py-2 rounded-xl text-[12px] font-bold transition-colors duration-700 bg-gray text-white border border-white hover:bg-white hover:text-black
+                        `}
+          >
+            Go To Portfolio
+          </button>
+        </a> */}
+      </div>
       <div className="w-1/2">
         <div className="flex items-center justify-center gap-4 mb-6">
           <button
@@ -16,7 +27,7 @@ function Page() {
             className={`w-44 px-6 py-2 rounded-xl text-[18px] font-bold transition-colors duration-700 ${
               activeComponent === "login"
                 ? "bg-white text-black hover:bg-gray hover:text-white hover:border"
-                : "bg-gray-500 text-white border border-white hover:bg-white hover:text-black"
+                : "bg-gray text-white border border-white hover:bg-white hover:text-black"
             }`}
           >
             Login
@@ -25,7 +36,7 @@ function Page() {
             onClick={() => setActiveComponent("signup")}
             className={`w-44 px-6 py-2 rounded-xl text-[18px] font-bold transition-colors duration-700 ${
               activeComponent === "signup"
-                ? "bg-white text-black hover:bg-gray-400 hover:text-white hover:border"
+                ? "bg-white text-black hover:bg-gray hover:text-white hover:border"
                 : "bg-gray text-white border border-white hover:bg-white hover:text-black"
             }`}
           >

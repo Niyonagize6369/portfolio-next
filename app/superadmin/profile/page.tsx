@@ -82,7 +82,7 @@ function Page() {
   return (
     <div className="min-h-screen flex text-black">
       {/* Sidebar */}
-      <aside className="w-1/5 bg-gray-800 text-white flex flex-col items-center py-10 space-y-8">
+      <aside className="w-1/5 bg-gray text-white flex flex-col items-center py-10 space-y-8">
         <button
           onClick={() => router.back()}
           className="px-4 py-2 bg-gray-700 rounded hover:bg-gray-600 cursor-pointer"
@@ -94,7 +94,7 @@ function Page() {
           <div className="rounded-full w-32 h-32 overflow-hidden border-4 border-white">
             <Image
               src="/assets/profile.jpg"
-              alt="profile"
+              alt="Profile"
               width={128}
               height={128}
               className="object-cover w-full h-full"
@@ -142,8 +142,8 @@ function Page() {
       </aside>
 
       {showLogoutModal && (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-20 flex items-center justify-center">
-          <div className="bg-gray-400 p-6 rounded-xl shadow-xl text-center w-80">
+        <div className="fixed inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+          <div className="bg-white p-6 rounded-xl shadow-xl text-center w-80">
             <h3 className="text-lg font-semibold mb-4"> Logout</h3>
             <p className="text-gray-600 mb-6">
               Are you sure you want to log out?
@@ -167,9 +167,9 @@ function Page() {
       )}
 
       {/* Main Content */}
-      <main className="w-4/5 bg-gray-400 p-10 space-y-6">
+      <main className="w-4/5 bg-gray-100 p-10 space-y-6">
         {/* Profile Section */}
-        <section id="profile" className="bg-gray-400 rounded-xl shadow p-6">
+        <section id="profile" className="bg-white rounded-xl shadow p-6">
           <button
             onClick={() => toggleSection("profile")}
             className="text-xl font-semibold w-full text-left"
@@ -210,7 +210,7 @@ function Page() {
         </section>
 
         {/* Security Section */}
-        <section id="security" className="bg-gray-400 rounded-xl shadow p-6">
+        <section id="security" className="bg-white rounded-xl shadow p-6">
           <button
             onClick={() => toggleSection("security")}
             className="text-xl font-semibold w-full text-left"
@@ -245,18 +245,16 @@ function Page() {
         </section>
 
         {/* Danger Zone */}
-        <section id="account" className="bg-gray-400 rounded-xl shadow p-6">
+        <section id="account" className="bg-white rounded-xl shadow p-6">
           <button
             onClick={() => toggleSection("account")}
             className="text-xl font-semibold w-full text-left text-red-600"
           >
-            Be carefully
+            Danger Zone
           </button>
           {activeSection === "account" && (
             <div className="mt-4">
-              <p className="text-gray-600">
-                Permanently delete your account and all data.
-              </p>
+              <p className="text-gray-600">delete your account and all data.</p>
               <button className="mt-4 flex items-center gap-2 text-red-500 hover:underline">
                 <CiTrash size={20} /> Delete my account
               </button>
